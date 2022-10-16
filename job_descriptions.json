@@ -1,0 +1,19 @@
+{
+   "jobs":{
+      "Analista de Datos":[
+         "python",
+         "pandas",
+         "sql"
+      ],
+      "Cajero":[
+         "atencion al cliente",
+         "excel",
+         "finanzas"
+      ],
+      "Gerente":[
+         "liderazgo",
+         "trabajo en equipo",
+         "coaching"
+      ]
+   }
+}
