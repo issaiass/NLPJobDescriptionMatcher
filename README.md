@@ -6,7 +6,9 @@
 
 The purpose of the project is to analyze information from a resume based on text, keywords or by a <b>.pdf</b> or <b>.docx</b> document using NLP with Spacy.
 
-We will qualify the resumes based on similarity with the job description and will list the best match
+We will qualify the resumes based on similarity with the job description and will list the best match.
+
+Access the app from [this link](https://nlpjobdescriptionmatcher.herokuapp.com/)
 
 </details>
 
