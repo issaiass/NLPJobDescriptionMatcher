@@ -1,5 +1,3 @@
 streamlit
-en-core-web-sm
-es-core-news-sm
 spacy
 spacy_streamlit
