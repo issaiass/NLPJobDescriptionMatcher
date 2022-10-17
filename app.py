@@ -2,12 +2,19 @@ import streamlit as st
 import spacy_streamlit 
 import spacy
 from spacy import displacy
+from spacy.cli import download
+
 import json
 
 models = ['es_core_news_sm', 'en_core_web_sm']
 def displaycy(args):
     text = args
-    nlp = spacy.load(models[0])
+    try:
+        nlp = spacy.load(models[0])
+    except:
+       download('es')
+       download('en')
+       nlp = spacy.load(models[0])
     doc = nlp(text)
     st.header("Visualizador de Partes de Texto")
     ent_html = displacy.render(doc, style="ent", jupyter=False)
