@@ -7,14 +7,17 @@ from spacy.cli import download
 import json
 
 models = ['es_core_news_sm', 'en_core_web_sm']
-def displaycy(args):
-    text = args
+def displaycy(text, mdl):
+    if mdl=='Spanish Model':
+        model_id = 0
+    if mdl=='English Model':
+        model_id = 1
     try:
-        nlp = spacy.load(models[0])
+        nlp = spacy.load(models[model_id])
     except:
        download('es')
        download('en')
-       nlp = spacy.load(models[0])
+       nlp = spacy.load(models[model_id])
     doc = nlp(text)
     st.header("Visualizador de Partes de Texto")
     ent_html = displacy.render(doc, style="ent", jupyter=False)
@@ -27,8 +30,11 @@ def displaycy(args):
 with st.sidebar:
     st.title('Analyzer Tool - Options')
 
+    # Radio Button Models
+    model_types = ('Spanish Model', 'English Model')
+    model_selection = st.radio("Model Selector", model_types)
 
-    # Radio Button Actions
+    # Radio Button Analysis
     analysis_actions = ('Compare with Job Description', 'Extract Info from Resume')
     analysis_type = st.radio("Action", analysis_actions)
     	
@@ -68,7 +74,7 @@ with st.sidebar:
             #st.write(bytes_data)
 
 
-    st.button('Start Analysis', on_click=displaycy, args=(resume_description,))
+    st.button('Start Analysis', on_click=displaycy, args=(resume_description, model_selection))
 
 hide_st_style = """
     <style>
