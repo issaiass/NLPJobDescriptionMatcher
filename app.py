@@ -7,10 +7,6 @@ import json
 models = ['es_core_news_sm', 'en_core_web_sm']
 def displaycy(args):
     text = args
-    try:
-        nlp = spacy.load(models[0])
-    except: # If not present, we download
-        spacy.cli.download("en_core_web_md")
     nlp = spacy.load(models[0])
     doc = nlp(text)
     st.header("Visualizador de Partes de Texto")
