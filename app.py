@@ -1,5 +1,20 @@
 import streamlit as st
+import spacy_streamlit 
+import spacy
+from spacy import displacy
 import json
+
+models = ['es_core_news_sm', 'en_core_web_sm']
+def displaycy(args):
+    text = args
+    nlp = spacy.load(models[0])
+    doc = nlp(text)
+#    d = [(ent.text, ent.label_) for ent in doc.ents]
+    st.header("Visualizador de Partes de Texto")
+    ent_html = displacy.render(doc, style="ent", jupyter=False)
+    # Display the entity visualization in the browser:
+    st.markdown(ent_html, unsafe_allow_html=True)
+
 
 
 # Side Bar
@@ -37,7 +52,7 @@ with st.sidebar:
     resume_selector_type = st.radio("Resume Options", resume_selector_actions)
     
     if resume_selector_type=='Text':
-        resume_description = st.text_area('Write or paste the Resume', '')
+        resume_description = st.text_area(label='Write or paste the Resume', value='')
     if resume_selector_type=='File':
         resume_description = st.file_uploader("Choose Resume(s)", accept_multiple_files=True)
         for resume in resume_description:
@@ -47,7 +62,7 @@ with st.sidebar:
             #st.write(bytes_data)
 
 
-    st.button('Start Analysis', on_click=None)
+    st.button('Start Analysis', on_click=displaycy, args=(resume_description,))
 
 hide_st_style = """
     <style>
@@ -55,4 +70,8 @@ hide_st_style = """
     footer {visibility: hidden;}
     </style>
 """
+
+
+
+
 st.markdown(hide_st_style, unsafe_allow_html=True)
