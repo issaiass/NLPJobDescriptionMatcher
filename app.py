@@ -28,8 +28,9 @@ with st.sidebar:
             job_description = st.file_uploader("Upload the Job Description")
             if job_description is not None:
                 # To read file as bytes:
-                bytes_data = job_description.getvalue()
-                st.write(bytes_data)
+                pass
+                #bytes_data = job_description.getvalue()
+                #st.write(bytes_data)
 
     # Resume Components
     resume_selector_actions = ('Text', 'File')
@@ -40,9 +41,10 @@ with st.sidebar:
     if resume_selector_type=='File':
         resume_description = st.file_uploader("Choose Resume(s)", accept_multiple_files=True)
         for resume in resume_description:
-            bytes_data = resume.read()
-            st.write("filename:", resume.name)
-            st.write(bytes_data)
+            pass
+            #bytes_data = resume.read()
+            #st.write("filename:", resume.name)
+            #st.write(bytes_data)
 
 
     st.button('Start Analysis', on_click=None)
